@@ -26,7 +26,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -43,6 +43,10 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    microsoft-edge
+    vscode
+    nixd
+    nixfmt-rfc-style
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -60,23 +64,8 @@
     # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/m3tam3re/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   programs.git = {
@@ -87,6 +76,20 @@
       init.defaultBranch = "main";
     };
   };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
+  programs.starship.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

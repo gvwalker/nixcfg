@@ -74,6 +74,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.grant = {
     isNormalUser = true;
@@ -93,23 +96,15 @@
     users.grant = import ../../home/grant/${config.networking.hostName}.nix;
   };
 
-  programs._1password-gui.enable = true;
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    microsoft-edge
     wget
-    neovim
-    vscode
-    nixd
-    nixfmt-rfc-style
   ];
+
+  programs._1password-gui.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
