@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./home.nix
@@ -26,9 +26,4 @@
       msedge.enable = true;
     };
   };
-
-  home.packages =
-    with pkgs;
-    [
-    ];
 }

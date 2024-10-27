@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./fonts.nix
@@ -7,8 +7,8 @@
     ./msedge.nix
   ];
 
-  home.packages =
-    with pkgs;
-    [
-    ];
+  # home.packages =
+  #   with pkgs;
+  #   [
+  #   ];
 }
