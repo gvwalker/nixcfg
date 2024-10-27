@@ -18,6 +18,12 @@
     };
     dev = {
       vscode.enable = true;
+      jetbrains = {
+        toolbox.enable = false;
+        rider.enable = false;
+        rust-rover.enable = false;
+        pycharm.enable = false;
+      };
     };
     desktop = {
       fonts.enable = true;
