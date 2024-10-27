@@ -44,7 +44,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    # EDITOR = "nvim";
   };
 
   programs.git = {
