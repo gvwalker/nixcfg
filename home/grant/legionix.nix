@@ -23,10 +23,12 @@
       fonts.enable = true;
       kitty.enable = true;
       _1password.enable = true;
+      msedge.enable = true;
     };
   };
 
-  home.packages = with pkgs; [
-    microsoft-edge
-  ];
+  home.packages =
+    with pkgs;
+    [
+    ];
 }
