@@ -4,6 +4,7 @@
     ./fzf.nix
     ./neofetch.nix
     ./neovim.nix
+    ./_1password.nix
   ];
 
   programs.zsh = {
