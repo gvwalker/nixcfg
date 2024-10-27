@@ -5,7 +5,6 @@
   inputs,
   outputs,
   pkgs,
-  home-manager,
   ...
 }:
 {
