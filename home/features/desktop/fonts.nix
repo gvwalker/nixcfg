@@ -26,5 +26,6 @@ in
       font-awesome_5
       noto-fonts
     ];
+    fonts.fontconfig.enable = true;
   };
 }
