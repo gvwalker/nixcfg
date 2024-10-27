@@ -11,6 +11,7 @@
   imports = [
     ./users
     ./extra-services
+    ./desktop
     inputs.home-manager.nixosModules.home-manager
   ];
 
