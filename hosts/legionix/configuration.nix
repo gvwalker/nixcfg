@@ -3,9 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   inputs,
-  outputs,
   pkgs,
   ...
 }:
@@ -72,28 +70,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.grant = {
-    isNormalUser = true;
-    description = "Grant Walker";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
-  };
-
-  home-manager = {
-    useUserPackages = true;
-    extraSpecialArgs = {
-      inherit inputs outputs;
-    };
-    users.grant = import ../../home/grant/${config.networking.hostName}.nix;
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

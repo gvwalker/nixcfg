@@ -4,11 +4,25 @@
   lib,
   inputs,
   outputs,
+  pkgs,
+  home-manager,
   ...
 }:
 {
+  imports = [
+    ./users
+    inputs.home-manager.nixosModules.home-manager
+  ];
+  home-manager = {
+    useUserPackages = true;
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
+  };
+
   nixpkgs = {
     # You can add overlays here
+
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
@@ -50,4 +64,7 @@
     );
     nixPath = [ "/etc/nix/path" ];
   };
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 }
