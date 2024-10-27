@@ -5,6 +5,7 @@
     ./neofetch.nix
     ./neovim.nix
     ./_1password.nix
+    ./bat.nix
   ];
 
   programs.zsh = {
@@ -16,7 +17,6 @@
       la = "ls -la";
       grep = "rg";
       ps = "procs";
-      cat = "bat";
     };
   };
 
@@ -34,10 +34,6 @@
       "-l"
       "-a"
     ];
-  };
-
-  programs.bat = {
-    enable = true;
   };
 
   programs.starship.enable = true;

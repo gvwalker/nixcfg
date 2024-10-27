@@ -11,6 +11,7 @@
   features = {
     cli = {
       fzf.enable = true;
+      bat.enable = true;
       neofetch.enable = true;
       neovim.enable = true;
       _1password.enable = false;
