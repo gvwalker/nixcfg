@@ -63,6 +63,12 @@
             ./hosts/nixwsl
           ];
         };
+        poseidon = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./hosts/poseidon ];
+        };
       };
       homeConfigurations = {
         "grant@legionix" = home-manager.lib.homeManagerConfiguration {
@@ -85,6 +91,13 @@
             inherit inputs outputs;
           };
           modules = [ ./home/grant/nixwsl.nix ];
+        };
+        "grant@poseidon" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./home/grant/poseidon.nix ];
         };
       };
     };
