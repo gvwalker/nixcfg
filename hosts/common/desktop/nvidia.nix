@@ -7,7 +7,7 @@ in
   options.features.desktop.nvidia.enable = mkEnableOption "enable nvidia gpu";
 
   config = mkIf cfg.enable {
-    hardware.opengl.enable = true;
+    hardware.graphics.enable = true;
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
       modesetting.enable = true;

@@ -13,7 +13,7 @@
         plasma.enable = true;
       };
       sound.enable = true;
-      nvidia.enable = false;
+      nvidia.enable = true;
     };
   };
 
