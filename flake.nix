@@ -38,6 +38,12 @@
           };
           modules = [ ./hosts/legionix ];
         };
+        nixhyperv = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./hosts/nixhyperv ];
+        };
       };
       homeConfigurations = {
         "grant@legionix" = home-manager.lib.homeManagerConfiguration {
@@ -46,6 +52,13 @@
             inherit inputs outputs;
           };
           modules = [ ./home/grant/legionix.nix ];
+        };
+        "grant@nixhyperv" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./home/grant/nixhyperv.nix ];
         };
       };
     };
