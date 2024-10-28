@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib;
@@ -13,10 +12,5 @@ in
 
   config = mkIf cfg.enable {
     programs.vscode.enable = true;
-
-    home.packages = with pkgs; [
-      nixd
-      nixfmt-rfc-style
-    ];
   };
 }

@@ -1,14 +1,18 @@
-{ config, lib, pkgs, inputs, ... }:
-
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
-  
+
   networking.hostName = "nixwsl";
 
   environment.systemPackages = with pkgs; [ wget ];
-  
+
   programs.nix-ld = {
     enable = true;
     package = pkgs.nix-ld-rs;

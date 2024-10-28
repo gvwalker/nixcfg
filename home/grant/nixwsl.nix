@@ -18,6 +18,7 @@
     };
     dev = {
       vscode.enable = false;
+      nix-dev.enable = true;
       jetbrains = {
         toolbox.enable = false;
         rider.enable = false;

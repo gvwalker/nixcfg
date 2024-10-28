@@ -52,7 +52,7 @@
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ 
+          modules = [
             inputs.nixos-wsl.nixosModules.default
             {
               wsl.enable = true;
@@ -60,7 +60,7 @@
 
               system.stateVersion = "24.05";
             }
-            ./hosts/nixwsl 
+            ./hosts/nixwsl
           ];
         };
       };
