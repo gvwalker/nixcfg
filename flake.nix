@@ -8,6 +8,10 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -44,6 +48,21 @@
           };
           modules = [ ./hosts/nixhyperv ];
         };
+        nixwsl = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ 
+            inputs.nixos-wsl.nixosModules.default
+            {
+              wsl.enable = true;
+              wsl.defaultUser = "grant";
+
+              system.stateVersion = "24.05";
+            }
+            ./hosts/nixwsl 
+          ];
+        };
       };
       homeConfigurations = {
         "grant@legionix" = home-manager.lib.homeManagerConfiguration {
@@ -59,6 +78,13 @@
             inherit inputs outputs;
           };
           modules = [ ./home/grant/nixhyperv.nix ];
+        };
+        "grant@nixwsl" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./home/grant/nixwsl.nix ];
         };
       };
     };
